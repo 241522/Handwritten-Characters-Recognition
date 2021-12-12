@@ -1,0 +1,51 @@
+.options {
+  align-self: center;
+  width: 100%;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+    width: 0;
+  }
+  to {
+    transform: translateX(0px);
+    width: 50%;
+  }
+}
+
+.proc-button {
+  width: 100%;
+  color: $charcoal;
+  background: $light-goldenrod-yellow;
+  height: 75px;
+  border-radius: 10px;
+  font-size: 30px;
+  cursor: pointer;
+  transition: filter 0.2s;
+  &:hover {
+    filter: brightness(0.9);
+  }
+}
+
+.choices {
+  margin-bottom: 15px;
+}
+
+.results {
+  padding: 10px;
+  box-sizing: border-box;
+  height: 100%;
+  border: 4px solid $charcoal;
+  border-radius: 26px;
+  animation: rising 0.5s;
+}
+
+@keyframes rising {
+  from {
+    height: 0;
+  }
+  to {
+    height: 100%;
+  }
+}

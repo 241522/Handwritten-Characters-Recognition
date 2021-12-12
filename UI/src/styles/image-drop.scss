@@ -1,0 +1,11 @@
+.container {
+  align-self: center;
+  margin: 15px;
+  border: 4px dashed $charcoal;
+  border-radius: 26px;
+  flex: 1 1 auto;
+  overflow: hidden;
+  width: 100%;
+  max-height: calc(100vh - 30px);
+  transition: height 1s;
+}

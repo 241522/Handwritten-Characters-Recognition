@@ -1,0 +1,48 @@
+$light-goldenrod-yellow: #eaf0ceff;
+$silver-sand: #c0c5c1ff;
+$charcoal: #4a525aff;
+$raisin-black: #24272bff;
+$rich-black-fogra-39: #07070aff;
+
+@import "./image-drop.scss";
+@import "./options.scss";
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: $raisin-black;
+  color: $light-goldenrod-yellow;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.main {
+  display: flex;
+  flex: 1 1 auto;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.results-container {
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  width: 50%;
+  animation: slide-in 0.5s;
+}
