@@ -3,9 +3,13 @@ import axios from "axios";
 function Options({ path, setDataPresent, setData }) {
   const sendPath = async () => {
     try {
-      let tmp = await axios.post("http://127.0.0.1:5000/image", {
-        path: path,
-      });
+      let tmp = await axios.post(
+        "http://127.0.0.1:5000/image",
+        {
+          path: path,
+        },
+        { headers: { "content-type": "application/json" } }
+      );
       console.log(tmp);
       if (tmp.data) {
         setDataPresent(true);

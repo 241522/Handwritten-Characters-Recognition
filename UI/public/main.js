@@ -10,11 +10,14 @@ function createWindow() {
   const win = new BrowserWindow({
     width: 800,
     height: 500,
+    titleBarStyle: "hidden",
+    titleBarOverlay: true,
+    // transparent: true,
     webPreferences: {
       nodeIntegration: true,
       enableRemoteModule: true,
       contextIsolation: false,
-      // webSecurity: false,
+      webSecurity: false,
     },
   });
 

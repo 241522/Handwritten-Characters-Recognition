@@ -16,6 +16,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: $raisin-black;
   color: $light-goldenrod-yellow;
+  user-select: none;
 }
 
 * {
@@ -23,9 +24,11 @@ body {
 }
 
 .main {
+  margin-top: 26px;
   display: flex;
-  flex: 1 1 auto;
-  height: 100vh;
+  // flex: 1 1 auto;
+  // height: calc(100vh - 40px);
+  height: calc(100vh - 40px);
   width: 100vw;
   overflow: hidden;
 }
@@ -38,11 +41,20 @@ body {
 }
 
 .results-container {
-  margin: 15px;
+  margin-right: 15px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   justify-content: center;
   width: 50%;
   animation: slide-in 0.5s;
+}
+
+.titlebar {
+  position: absolute;
+  top: 0;
+  height: 30px;
+  width: 100%;
+  z-index: -1;
+  -webkit-app-region: drag;
 }

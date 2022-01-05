@@ -12,6 +12,7 @@ function App() {
 
   return (
     <div className="main">
+      <div className="titlebar" />
       <ImageDrop
         loaded={loaded}
         setLoaded={(load) => setLoaded(load)}
