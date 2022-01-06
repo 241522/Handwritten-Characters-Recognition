@@ -1,3 +1,5 @@
+from rest_framework.routers import DefaultRouter
+from .views import form_view
 """handwritten_characters_django URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -14,8 +16,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+
 
 urlpatterns = [
+    path('images/', form_view),
     path('admin/', admin.site.urls),
 ]
