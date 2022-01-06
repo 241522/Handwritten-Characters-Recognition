@@ -7,6 +7,16 @@
   overflow: hidden;
   width: 100%;
   max-height: calc(100vh - 30px);
+  .error {
+    font-size: 12px;
+    position: absolute;
+    color: red;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
 }
 
 .clear {
@@ -15,4 +25,20 @@
   right: 10px;
   z-index: 1;
   cursor: pointer;
+}
+
+.images-container {
+  width: calc(50vw - 30px);
+  object-fit: contain;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  img {
+    max-height: 90vh;
+    object-fit: contain;
+  }
 }

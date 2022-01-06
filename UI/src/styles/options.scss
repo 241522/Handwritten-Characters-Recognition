@@ -1,6 +1,10 @@
 .options {
   align-self: center;
   width: 100%;
+  .error {
+    color: red;
+    font-size: 12px;
+  }
 }
 
 @keyframes slide-in {
@@ -30,6 +34,9 @@
 
 .choices {
   margin-bottom: 15px;
+  display: flex;
+  width: 100%;
+  gap: 20px;
 }
 
 .results {
@@ -47,5 +54,22 @@
   }
   to {
     height: 100%;
+  }
+}
+
+.loading {
+  width: 30px;
+  height: 30px;
+  border-top: 2px solid $charcoal;
+  border-radius: 100%;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
