@@ -2,6 +2,8 @@ import numpy
 import numpy as np
 from PIL import Image
 
+THRESHOLD_FOR_BLACK = 180
+
 
 def rescale_image(im, size=28, fill_color=255):
     x, y = im.size
@@ -22,14 +24,16 @@ def get_negative(pixels):
     return 255 - pixels
 
 
-def thresholding(pixels):
-    for i in range(0, 28):
-        for j in range(0, 28):
-            if pixels[i][j] > 180:
-                pixels[i][j] = 255
+def thresholding(im):
+    for i in range(0, im.size[0] - 1):
+        for j in range(0, im.size[1] - 1):
+            pixel = im.getpixel((i, j))
+            if pixel> THRESHOLD_FOR_BLACK:
+                pixel = 255
             else:
-                pixels[i][j] = 0
-    return pixels
+                pixel = 0
+            im.putpixel((i, j), pixel)
+    return im
 
 
 def normalize(pixels):
@@ -41,18 +45,20 @@ def reshape(pixels):
 
 
 def process_image(im):
+    im = im.convert("L")
+    im = thresholding(im)
     im = rescale_image(im)
     pixels = get_pixels(im)
     pixels = reshape(
         normalize(
             get_negative(
-                thresholding(pixels))))
+                pixels)))
     return pixels
 
 
-def read_mapping():
+def read_mapping(filepath):
     mapping = dict()
-    with open("emnist-balanced-mapping.txt") as f:
+    with open(filepath) as f:
         for line in f:
             split_line = line.split(" ")
             mapping[int(split_line[0])] = int(split_line[1])
