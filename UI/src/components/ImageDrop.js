@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Drop from "./images/drop.svg";
 
 const fs = window.require("fs");
@@ -12,10 +12,14 @@ const imageTypes = [
   "image/gif",
 ];
 
-function ImageDrop({ loaded, setLoaded, path, setPath }) {
+function ImageDrop({ loaded, setLoaded, path, setPath, moreThanOne }) {
   const [image, setImage] = useState();
   const [imageDispl, setImageDispl] = useState();
   const [errMsg, setErrMsg] = useState();
+
+  useEffect(() => {
+    moreThanOne(image?.length > 1);
+  }, [image?.length, moreThanOne]);
 
   const onDropEvent = (e) => {
     e.stopPropagation();
@@ -26,8 +30,7 @@ function ImageDrop({ loaded, setLoaded, path, setPath }) {
       let fileTypes = files.map((file) => file.type);
       fileTypes.forEach((fileType) => {
         let tmp = imageTypes.some((type) => type === fileType);
-        console.log(tmp);
-        if (!tmp) throw "Wrong file type!";
+        if (!tmp) throw new Error("Wrong file type!");
       });
       setImage(files);
       setPath(files.map((file) => file.path));
@@ -38,7 +41,7 @@ function ImageDrop({ loaded, setLoaded, path, setPath }) {
       setErrMsg(null);
       setLoaded(true);
     } catch (er) {
-      setErrMsg(er);
+      setErrMsg(er.message);
       setLoaded(false);
     }
   };

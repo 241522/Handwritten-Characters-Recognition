@@ -2,48 +2,45 @@ import { useState } from "react";
 
 import axios from "axios";
 
-function Options({ path, setDataPresent, setData }) {
+function Options({ path, setDataPresent, setData, moreThanOne }) {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [checks, setChecks] = useState({ deep: false, feature: false });
+  // const [checks, setChecks] = useState({ deep: false, feature: false });
 
   const sendPath = async () => {
-    if (checks.feature || checks.deep) {
-      setLoading(true);
-      try {
-        let tmp = await axios.post(
-          "http://127.0.0.1:5000/image",
-          {
-            algorithms: checks,
-            path: path,
-          },
-          { headers: { "content-type": "application/json" } }
-        );
-        if (tmp?.data) {
-          setError(false);
-          setDataPresent(true);
-          setData(tmp.data);
-        }
-      } catch (er) {
-        setError(true);
+    setLoading(true);
+    try {
+      let tmp = await axios.post(
+        "http://127.0.0.1:5000/image",
+        {
+          path: path,
+        },
+        { headers: { "content-type": "application/json" } }
+      );
+      if (tmp?.data) {
+        setError(false);
+        setDataPresent(true);
+        setData(tmp.data);
       }
-      setLoading(false);
+    } catch (er) {
+      setError(true);
     }
+    setLoading(false);
   };
   return (
     <div className="options">
-      <div className="choices">
-        <label class="check-container">
+      {/* <div className="choices">
+        <label className="check-container">
           Deep Learning
           <input
             type="checkbox"
             checked={checks.deep}
             onChange={() => setChecks({ ...checks, deep: !checks.deep })}
           />
-          <span class="checkmark"></span>
+          <span className="checkmark"></span>
         </label>
 
-        <label class="check-container">
+        <label className="check-container">
           Feature Based
           <input
             type="checkbox"
@@ -52,7 +49,7 @@ function Options({ path, setDataPresent, setData }) {
           />
           <span class="checkmark"></span>
         </label>
-      </div>
+      </div> */}
       <div className="proc-button center" onClick={() => sendPath()}>
         {loading ? <div className="loading" /> : "Process"}
       </div>
