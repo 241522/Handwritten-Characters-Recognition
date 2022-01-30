@@ -32,7 +32,7 @@ def findDescriptors(images):
 # In[4]:
 
 
-def findLabel(img, descriptors_list, threshold = 0):
+def findLabel(img, descriptors_list, threshold = 15):
     test_key_points, test_descriptor = sift.detectAndCompute(img, None)
     bf = cv2.BFMatcher()
     match_list = []
@@ -62,6 +62,9 @@ def findLabel(img, descriptors_list, threshold = 0):
 
 
 def resize(img):
+    if img.shape[0] > 50 and img.shape[1] > 50:
+        return img
+    
     scale_percent = 220 # percent of original size
     width = int(img.shape[1] * scale_percent / 100)
     height = int(img.shape[0] * scale_percent / 100)
