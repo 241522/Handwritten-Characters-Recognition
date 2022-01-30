@@ -79,7 +79,7 @@ def tune(x_train, y_train, x_test, y_test):
                      "C:\\Studia\\Semestr_9\\Multimedia\\Handwritten_Characters_Recognition\\logs\\tb_logs")])
 
 def save_model(model):
-    filename_model = 'my_model'
+    filename_model = 'my_model.h5'
     model.save(filename_model)
 
 def save_history(history):
