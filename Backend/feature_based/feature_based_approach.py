@@ -106,8 +106,7 @@ print(len(descriptors_list))
 
 def detectCharacter(file):
 
-    pil_image = PIL.Image.open(file)
-    opencvImage = cv2.cvtColor(numpy.array(pil_image), cv2.COLOR_BGR2GRAY)
+    opencvImage = cv2.imread(file)
     test_img = resize(opencvImage)
     
     indx = findLabel(test_img, descriptors_list)

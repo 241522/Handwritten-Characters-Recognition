@@ -1,6 +1,8 @@
 import json
 import time
 
+from pathlib import Path
+
 from neural_network.Prediction import predict_character, Prediction
 from handwritten_characters_django.apps import model, mapping
 from feature_based.feature_based_approach import detectCharacter
@@ -22,7 +24,7 @@ def get_method_stats(files, method):
         if method == "nn":
             prediction = predict_character(f, model, mapping)
         elif method == "fb":
-            prediction = Prediction(f.name, detectCharacter(f))
+            prediction = Prediction(Path(f).name, detectCharacter(f))
         else:
             raise Exception()
         time_elapsed += time.perf_counter() - start

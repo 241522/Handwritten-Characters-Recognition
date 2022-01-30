@@ -27,4 +27,4 @@ def predict_character(file, model, mapping):
 
     prediction = np.argmax(model.predict(new_im))
     print(f" Predicted class={prediction}, which is \"{chr(mapping[prediction])}\" character. ")
-    return Prediction(file.name, chr(mapping[prediction]))
+    return Prediction(Path(file).name, chr(mapping[prediction]))

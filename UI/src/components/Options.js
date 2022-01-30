@@ -11,7 +11,7 @@ function Options({ path, setDataPresent, setData, moreThanOne }) {
     setLoading(true);
     try {
       let tmp = await axios.post(
-        "http://127.0.0.1:5000/image",
+        "http://127.0.0.1:8000/images/",
         {
           path: path,
         },
