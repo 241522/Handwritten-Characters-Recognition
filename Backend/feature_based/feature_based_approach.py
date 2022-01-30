@@ -46,7 +46,6 @@ def findLabel(img, descriptors_list, threshold = 15):
                     good.append([m])
 
             match_list.append(len(good))
-        print(match_list)
     except:
         print("WARNING, knn match EXCEPTION")
         pass
@@ -85,7 +84,6 @@ images = []
 class_names = []
 my_list = os.listdir(path)
 
-print('Total classes detected', len(my_list))
 
 for cl in sorted(my_list):
     current_img = cv2.imread(f'{path}/{cl}', 0)
@@ -118,7 +116,6 @@ def detectCharacter(file):
     if indx != -1:
         result = class_names[indx]
     cn= class_names
-    print("result: ", result)
     
     return result
 

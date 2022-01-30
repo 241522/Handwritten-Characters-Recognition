@@ -34,6 +34,7 @@ def get_method_stats(files, method):
             accurate +=1
 
         predictions.append(prediction)
+    time_elapsed = round(time_elapsed, 2)
 
     return Stats(accurate/total_count, time_elapsed, labeled_count=labeled, total_count=total_count, average_time=time_elapsed/total_count, predictions= predictions)
 
